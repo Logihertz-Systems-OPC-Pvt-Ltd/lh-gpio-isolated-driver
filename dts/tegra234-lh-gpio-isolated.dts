@@ -1,0 +1,43 @@
+// SPDX-License-Identifier: Apache-2.0
+/*
+ * NVIDIA Jetson Orin (Tegra234) Device-Tree Overlay
+ * Logihertz Isolated Industrial GPIO Subsystem
+ *
+ * Copyright 2026 Logihertz Systems (OPC) Private Limited
+ * Author: Sameer Tawade <ops@logihertz.com>
+ */
+
+/dts-v1/;
+/plugin/;
+
+/ {
+    overlay-name = "Logihertz Isolated Industrial GPIO Overlay for Jetson Orin";
+    compatible = "nvidia,tegra234", "nvidia,jetson-orin";
+
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            lh_gpio_isolated {
+                compatible = "logihertz,gpio-isolated-v1";
+                status = "okay";
+
+                /* Electrical Galvanic Isolation & Safety Parameters */
+                logihertz,isolation-rating-vrms = <5000>;
+                logihertz,channel-count = <8>;
+                logihertz,debounce-delay-us = <5000>;
+                logihertz,failsafe-state = "low";
+                logihertz,isolated-vcc2-uvlo-active = <1>;
+
+                /* Interrupt Storm Defense & Denial-of-Service Limiter */
+                logihertz,max-irq-rate-hz = <500>;
+                logihertz,cooldown-period-ms = <1000>;
+                logihertz,storm-mask-lockout = <1>;
+
+                /* Access Control & Kernel Chardev Invariants */
+                logihertz,chardev-permissions = <0600>;
+                logihertz,lock-channel-direction = <1>;
+                logihertz,disable-sysfs-export = <1>;
+            };
+        };
+    };
+};

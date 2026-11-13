@@ -1,0 +1,23 @@
+{
+  "policy_name": "vulnerable_legacy_gpio_policy",
+  "galvanic_isolation_vrms": 500,
+  "shared_field_logic_ground": true,
+  "irq_storm_limit_hz": 0,
+  "threaded_oneshot_irq": false,
+  "legacy_sysfs_gpio_enabled": true,
+  "chardev_permissions_octal": "0666",
+  "debounce_enabled": false,
+  "debounce_window_us": 0,
+  "failsafe_output_state_on_fault": false,
+  "isolated_vcc2_uvlo_monitor": false,
+  "optocoupler_ctr_saturation_ratio": 0.85,
+  "led_aging_derating_applied": false,
+  "atomic_edge_counters": false,
+  "chardev_exclusive_open": false,
+  "isolation_creepage_mm": 2.5,
+  "tvs_field_surge_protection": false,
+  "strict_ioctl_validation": false,
+  "lock_channel_direction_in_dt": false,
+  "monotonic_raw_edge_timestamps": false,
+  "log_irq_storm_events": false
+}

@@ -1,0 +1,23 @@
+{
+  "policy_name": "hardened_jetson_orin_policy",
+  "galvanic_isolation_vrms": 5000,
+  "shared_field_logic_ground": false,
+  "irq_storm_limit_hz": 500,
+  "threaded_oneshot_irq": true,
+  "legacy_sysfs_gpio_enabled": false,
+  "chardev_permissions_octal": "0600",
+  "debounce_enabled": true,
+  "debounce_window_us": 5000,
+  "failsafe_output_state_on_fault": true,
+  "isolated_vcc2_uvlo_monitor": true,
+  "optocoupler_ctr_saturation_ratio": 2.85,
+  "led_aging_derating_applied": true,
+  "atomic_edge_counters": true,
+  "chardev_exclusive_open": true,
+  "isolation_creepage_mm": 8.0,
+  "tvs_field_surge_protection": true,
+  "strict_ioctl_validation": true,
+  "lock_channel_direction_in_dt": true,
+  "monotonic_raw_edge_timestamps": true,
+  "log_irq_storm_events": true
+}

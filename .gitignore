@@ -1,0 +1,24 @@
+# Build directories and outputs
+bin/
+build/
+tests/test_runner
+
+# Object files and libraries
+*.o
+*.a
+*.so
+
+# Linux Kernel build artifacts
+*.ko
+*.mod
+*.mod.c
+.*.cmd
+Module.symvers
+modules.order
+.tmp_versions/
+
+# Archives and editor files
+*.tar.gz
+*.swp
+*~
+.DS_Store

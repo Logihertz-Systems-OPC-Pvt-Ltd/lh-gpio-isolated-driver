@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    name: Build & Test (${{ matrix.compiler }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler: [ gcc, clang ]
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Install Compiler Toolchain
+        run: |
+          sudo apt-get update
+          if [ "${{ matrix.compiler }}" = "clang" ]; then
+            sudo apt-get install -y clang llvm
+          else
+            sudo apt-get install -y gcc
+          fi
+
+      - name: Build Userspace CLI & Run Verification Suite
+        run: |
+          make CC=${{ matrix.compiler }} clean all test
+
+      - name: CLI Smoke Tests
+        run: |
+          ./bin/lh-gpio-iso --version
+          ./bin/lh-gpio-iso --help
+          ./bin/lh-gpio-iso scan fixtures/hardened_gpio_policy.json --format table
+          ./bin/lh-gpio-iso scan fixtures/hardened_gpio_policy.json --format json
+          ./bin/lh-gpio-iso scan fixtures/hardened_gpio_policy.json --format sarif
+          ./bin/lh-gpio-iso sim-debounce fixtures/sample_bounce_trace.json --debounce-us 3000
+          ./bin/lh-gpio-iso sim-debounce --generate --debounce-us 5000
+          ./bin/lh-gpio-iso calc-opto --vin 24.0 --rlimit 2200 --ctr 100 --aging 0.70
+          ./bin/lh-gpio-iso gen-dtoverlay --channels 8 --isolation-vrms 5000
