@@ -1,0 +1,9 @@
+Package: lh-gpio-isolated-driver
+Version: 0.1.0
+Section: utils
+Priority: optional
+Architecture: amd64
+Maintainer: Sameer Tawade <ops@logihertz.com>
+Homepage: https://www.logihertz.com
+Description: lh-gpio-iso - Kuhn Digital Integrator Filter & CTR Saturation Voltage
+ C11 optocoupled industrial GPIO driver and simulator featuring a Kuhn digital integrator contact-bounce filter, edge interrupt-storm lockout guard, optocoupler CTR aging saturation analyzer, and Tegra234 Device-Tree overlay.
