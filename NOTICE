@@ -1,8 +1,126 @@
-Logihertz Isolated Industrial GPIO Driver (lh-gpio-isolated-driver)
-Copyright 2026 Logihertz Systems (OPC) Private Limited
+================================================================================
+NOTICE — APACHE LICENSE 2.0 SECTION 4(d) ATTRIBUTION & PROVENANCE STATEMENT
+================================================================================
 
-This product includes software developed by Logihertz Systems (OPC) Private Limited
-and individual contributors.
+Project Name          : lh-gpio-isolated-driver
+CLI Executable        : lh-gpio-iso
+Release Baseline      : v0.1.0
+Primary Language      : ISO C11 Standard Library + Linux 6.6 gpiod Kmod
+Technical Domain      : Optocoupled Industrial GPIO & Debounce Driver
+Rule Identifier Range : LH-GPIO-001 through LH-GPIO-010
+SPDX License ID       : Apache-2.0
+Source Repository     : https://github.com/Logihertz-Systems-OPC-Pvt-Ltd/lh-gpio-isolated-driver
 
-Author: Sameer Tawade <ops@logihertz.com>
-Homepage: https://github.com/Logihertz-Systems-OPC-Pvt-Ltd/lh-gpio-isolated-driver
+--------------------------------------------------------------------------------
+1. PRIMARY COPYRIGHT & AUTHORSHIP ATTRIBUTION
+--------------------------------------------------------------------------------
+
+lh-gpio-isolated-driver
+Copyright (c) 2025-2026 Logihertz Systems (OPC) Private Limited.
+All Rights Reserved.
+
+This software product (lh-gpio-isolated-driver) was conceived, architected, engineered,
+and developed by:
+
+  * Principal Architect & Author : Sameer Tawade
+  * Role                         : Creator, Founder, Director & Sole Developer
+  * Issuing Organization         : Logihertz Systems (OPC) Private Limited
+  * Corporate Identity (CIN)     : U72100MH2025OPC463857 (RoC Mumbai, India)
+  * Tax Registration (GSTIN)     : 27AAGCL6394P1ZL
+  * Registered Office            : Shivshakti Chawl, Patkar, Mumbai - 400078,
+                                   Maharashtra, India
+  * Official Website             : https://www.logihertz.com
+  * Engineering & Ops Contact    : ops@logihertz.com
+  * Security & Vulnerability     : security@logihertz.com
+
+--------------------------------------------------------------------------------
+2. STANDALONE PROJECT SCOPE & ARCHITECTURAL SUMMARY
+--------------------------------------------------------------------------------
+
+lh-gpio-isolated-driver (`lh-gpio-iso`) is an independent, standalone open-source project
+engineered by Logihertz Systems (OPC) Private Limited.
+
+Architectural Focus:
+  Industrial opto-isolated GPIO verification engine and reference Linux 6.6
+  LTS character driver (lh_gpio_iso_kmod.c + Tegra234 Device-Tree Overlay)
+  implementing Kuhn digital integrator contact-bounce filtering, edge
+  interrupt-storm rate limiting, optocoupler Current Transfer Ratio (CTR)
+  aging/saturation physics, and a 10-rule industrial I/O posture auditor.
+
+Deterministic Posture Auditing & Reporting:
+  Evaluates target configurations, artifacts, or telemetry against ten normative
+  verification rules (LH-GPIO-001 through LH-GPIO-010), computes a
+  deterministic 0-100 posture score:
+    S_posture = max(0, 100 - (25 * CRITICAL + 10 * HIGH + 4 * MEDIUM + 1 * LOW))
+  and exports results in ANSI Terminal Table, Canonical JSON, and OASIS SARIF
+  v2.1.0 formats with deterministic CI/CD exit codes (0 = Pass, 1 = Policy
+  Violation, 2 = Execution/Parse Error).
+
+--------------------------------------------------------------------------------
+3. CLEAN-ROOM & ZERO THIRD-PARTY RUNTIME DEPENDENCY ATTESTATION
+--------------------------------------------------------------------------------
+
+lh-gpio-isolated-driver is a 100% clean-room implementation written by Sameer Tawade at
+Logihertz Systems (OPC) Private Limited.
+
+  * Zero External Runtime Dependencies: All core parsers, mathematical engines,
+    cryptographic/signal-processing primitives, rule evaluators, and SARIF
+    exporters are implemented strictly using the native ISO C11 Standard Library + Linux 6.6 gpiod Kmod
+    standard library.
+  * Supply-Chain Provenance: This package embeds zero third-party vendor code
+    fragments, zero external runtime packages, and zero telemetry beacons,
+    enabling deterministic, offline, air-gapped verification and deployment.
+
+--------------------------------------------------------------------------------
+4. NORMATIVE STANDARDS, RFCS & SPECIFICATIONS REFERENCED
+--------------------------------------------------------------------------------
+
+lh-gpio-isolated-driver implements or validates compliance against the following public
+engineering standards, RFCs, and security specifications:
+
+  * IEC 61131-2 (Programmable Controllers - Digital I/O Requirements), IEC 60747-5-5 / UL 1577 (Optocoupler Galvanic Isolation), Linux Kernel gpiod ABI
+  * OASIS Static Analysis Results Interchange Format (SARIF) Version 2.1.0
+  * MITRE Common Weakness Enumeration (CWE) Taxonomy
+  * IETF BCP 14 (RFC 2119 & RFC 8174) Normative Requirement Levels
+
+All referenced standards, RFCs, and specifications remain the copyright and
+intellectual property of their respective standards bodies (IETF, NIST, ISO/IEC,
+IEEE, OASIS, OWASP, MITRE, CIS, PCI SSC, ISRO, 3GPP, LoRa Alliance, TCG).
+
+--------------------------------------------------------------------------------
+5. APACHE LICENSE 2.0 SECTION 4(d) REDISTRIBUTION & PATENT NOTICE
+--------------------------------------------------------------------------------
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file or the lh-gpio-isolated-driver software except in compliance with the License.
+You may obtain a copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Pursuant to Section 4(d) of the Apache License, Version 2.0, if you reproduce
+and distribute copies of lh-gpio-isolated-driver or Derivative Works thereof in any medium,
+with or without modifications, in Source or Object form, you MUST retain, in
+the Source form of any Derivative Works that you distribute, all copyright,
+patent, trademark, and attribution notices from this NOTICE file, and you MUST
+include a readable copy of the attribution notices contained within this NOTICE
+file alongside any Object form distribution.
+
+Subject to the terms and conditions of the License, each Contributor hereby
+grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free,
+irrevocable copyright and patent license as set forth in Sections 2 and 3 of
+the Apache License, Version 2.0.
+
+--------------------------------------------------------------------------------
+6. TRADEMARK & CORPORATE IDENTITY NOTICE (APACHE-2.0 SECTION 6)
+--------------------------------------------------------------------------------
+
+Per Section 6 of the Apache License, Version 2.0, this License does not grant
+permission to use the trade names, trademarks, service marks, or product names
+of the Licensor, except as required for reasonable and customary use in
+describing the origin of the Work and reproducing the content of this NOTICE
+file.
+
+"Logihertz", "Logihertz Systems", and the Logihertz emblem are trademarks and
+trade names of Logihertz Systems (OPC) Private Limited in India and other
+jurisdictions.
+================================================================================
